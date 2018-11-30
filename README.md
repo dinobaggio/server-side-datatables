@@ -6,4 +6,4 @@ npm install
 
 import database in folder ##db##
 
-and open browser go to the url localhost:3000/admin
+and open browser, go to the url localhost:3000/admin
