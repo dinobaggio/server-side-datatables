@@ -8,6 +8,10 @@
         <tr>
             <th>Code</th>
             <th>Name</th>
+            <th>Department</th>
+            <th>Age</th>
+            <th>Birthday</th>
+            <th>Salary</th>
         </tr>
     </thead>
   </table>
@@ -22,11 +26,12 @@
         dataSrc: 'data'
       },
       columns:[
-        {
-          data: 'code',
-          searchable: true
-        },
-        {data: 'name'}
+        {data:'code'},
+        {data:'name'},
+        {data:'department'},
+        {data:'age'},
+        {data:'birthday'},
+        {data:'salary'}
       ],
       language:{
         searchPlaceholder: 'Search with name'
