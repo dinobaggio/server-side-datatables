@@ -1,0 +1,53 @@
+
+
+<%- include('../templates/header'); %>
+  
+  <input id="searchCode" type="text" placeholder="Search with code" class="mb-3">
+  <table id="dataStudent" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+  </table>
+
+  <script>
+    let elDataStudent = $('#dataStudent');
+    let tableStudent = elDataStudent.DataTable({
+      processing : true,
+      serverSide : true,
+      ajax : {
+        url: 'http://<%- baseUrl%>/api/student',
+        dataSrc: 'data'
+      },
+      columns:[
+        {
+          data: 'code',
+          searchable: true
+        },
+        {data: 'name'}
+      ],
+      language:{
+        searchPlaceholder: 'Search with name'
+      }
+    });
+
+    tableStudent
+    .columns()
+    .every(function () {
+      if (this[0][0] === 0) {
+        let that = this;
+        $('#searchCode').on('keyup change', function () {
+          if (that.search() !== this.value) {
+            that
+            .search(this.value)
+            .draw();
+          }
+        }); 
+      }
+    });
+  </script>
+
+
+<%- include('../templates/footer'); %>
